@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
 import { LuxLink } from "@/components/site/LuxButton";
 import { BRAND } from "@/components/site/brand";
-import logoAsset from "@/assets/brobex-logo.png.asset.json";
+import logoAsset from "@/assets/brobex-logo.png";
 
 const title = "About BroBex — Web Developer | Code. Design. Solve. Elevate.";
 const description =
@@ -112,7 +112,7 @@ function AboutBrobexPage() {
             <div className="lux-card glow-ring sheen group mx-auto grid max-w-xs place-items-center rounded-[1.75rem] p-8">
               <span className="float-slow grid h-40 w-40 place-items-center overflow-hidden rounded-full border border-brass/40 bg-surface-2">
                 <img
-                  src={logoAsset.url}
+                  src={logoAsset}
                   alt="BroBex web developer logo"
                   width={320}
                   height={320}

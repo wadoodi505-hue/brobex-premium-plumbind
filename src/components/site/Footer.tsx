@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { BRAND, NAV_LINKS } from "./brand";
-import { SERVICES } from "./services";
+import { SERVICES } from "./serviceData";
 
 const socials = [
-  { icon: Instagram, label: "Instagram" },
-  { icon: Facebook, label: "Facebook" },
-  { icon: Linkedin, label: "LinkedIn" },
+  { label: "Facebook", icon: Facebook },
+  { label: "Instagram", icon: Instagram },
+  { label: "LinkedIn", icon: Linkedin },
 ];
 
 export function Footer() {
