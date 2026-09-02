@@ -1,0 +1,511 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * BroBax — luxury dark design system.
+ * Deep obsidian surfaces, champagne/brass metallic accents.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brass: var(--brass);
+  --color-brass-soft: var(--brass-soft);
+  --color-copper: var(--copper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.16 0.008 60);
+  --foreground: oklch(0.96 0.006 80);
+  --surface: oklch(0.2 0.009 60);
+  --surface-2: oklch(0.24 0.011 62);
+  --card: oklch(0.21 0.01 62);
+  --card-foreground: oklch(0.96 0.006 80);
+  --popover: oklch(0.2 0.009 60);
+  --popover-foreground: oklch(0.96 0.006 80);
+  --primary: oklch(0.79 0.11 85);
+  --primary-foreground: oklch(0.18 0.01 60);
+  --brass: oklch(0.79 0.11 85);
+  --brass-soft: oklch(0.88 0.07 88);
+  --copper: oklch(0.63 0.13 45);
+  --secondary: oklch(0.26 0.012 62);
+  --secondary-foreground: oklch(0.95 0.006 80);
+  --muted: oklch(0.24 0.01 62);
+  --muted-foreground: oklch(0.72 0.014 80);
+  --accent: oklch(0.28 0.02 70);
+  --accent-foreground: oklch(0.96 0.006 80);
+  --destructive: oklch(0.6 0.19 25);
+  --destructive-foreground: oklch(0.97 0.005 80);
+  --border: oklch(0.99 0 0 / 10%);
+  --input: oklch(0.99 0 0 / 14%);
+  --ring: oklch(0.79 0.11 85 / 60%);
+
+  --gradient-brass: linear-gradient(
+    135deg,
+    oklch(0.72 0.1 78),
+    oklch(0.92 0.08 92) 45%,
+    oklch(0.74 0.11 70)
+  );
+  --gradient-hairline: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.85 0.09 88 / 55%),
+    transparent
+  );
+  --gradient-depth: radial-gradient(
+      120% 80% at 80% -10%,
+      oklch(0.35 0.06 70 / 45%),
+      transparent 60%
+    ),
+    radial-gradient(90% 70% at 0% 100%, oklch(0.28 0.03 250 / 35%), transparent 60%);
+  --shadow-lux: 0 30px 80px -40px oklch(0 0 0 / 85%);
+  --shadow-glow: 0 0 0 1px oklch(0.85 0.09 88 / 22%), 0 24px 60px -30px oklch(0.79 0.11 85 / 35%);
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: oklch(0.79 0.11 85 / 30%);
+  }
+}
+
+@utility text-metal {
+  background: var(--gradient-brass);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hairline {
+  height: 1px;
+  width: 100%;
+  background: var(--gradient-hairline);
+}
+
+@utility depth-bg {
+  background-image: var(--gradient-depth);
+}
+
+@utility glass {
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+@utility lux-card {
+  position: relative;
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--surface-2) 80%, transparent),
+      color-mix(in oklab, var(--surface) 92%, transparent)
+    );
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lux);
+  transition:
+    transform 0.5s var(--ease-lux),
+    border-color 0.5s var(--ease-lux),
+    box-shadow 0.5s var(--ease-lux);
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: oklch(0.85 0.09 88 / 35%);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s var(--ease-lux),
+    transform 0.8s var(--ease-lux);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+
+  &[data-from="left"] {
+    transform: translate3d(-40px, 0, 0);
+  }
+
+  &[data-from="right"] {
+    transform: translate3d(40px, 0, 0);
+  }
+
+  &[data-from="scale"] {
+    transform: scale3d(0.94, 0.94, 1);
+  }
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- Motion layer: GPU-composited, 90fps-friendly animations ---- */
+
+@keyframes lux-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes lux-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+@keyframes lux-pulse-ring {
+  0% { box-shadow: 0 0 0 0 oklch(0.79 0.11 85 / 45%); }
+  70% { box-shadow: 0 0 0 14px oklch(0.79 0.11 85 / 0%); }
+  100% { box-shadow: 0 0 0 0 oklch(0.79 0.11 85 / 0%); }
+}
+
+@keyframes lux-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes lux-aurora {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(4%, 3%, 0) scale(1.12); opacity: 0.85; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+}
+
+@utility text-metal-shimmer {
+  background: linear-gradient(
+    100deg,
+    oklch(0.72 0.1 78),
+    oklch(0.95 0.08 92) 25%,
+    oklch(0.74 0.11 70) 50%,
+    oklch(0.95 0.08 92) 75%,
+    oklch(0.72 0.1 78)
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: lux-shimmer 6s linear infinite;
+  will-change: background-position;
+}
+
+@utility float-slow {
+  animation: lux-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@utility aurora {
+  animation: lux-aurora 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@utility pulse-ring {
+  animation: lux-pulse-ring 2.4s var(--ease-lux) infinite;
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: lux-marquee 32s linear infinite;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility lift {
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 0.45s var(--ease-lux),
+    box-shadow 0.45s var(--ease-lux),
+    border-color 0.45s var(--ease-lux);
+  will-change: transform;
+  backface-visibility: hidden;
+
+  &:hover {
+    transform: translate3d(0, -6px, 0);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility sheen {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      oklch(1 0 0 / 12%) 50%,
+      transparent 65%
+    );
+    transform: translate3d(-120%, 0, 0);
+    transition: transform 0.9s var(--ease-lux);
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    transform: translate3d(120%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-metal-shimmer,
+  .float-slow,
+  .aurora,
+  .pulse-ring,
+  .marquee-track {
+    animation: none;
+  }
+  .lift:hover {
+    transform: none;
+  }
+}
+
+/* ---- Mobile slide-in motion ---- */
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translate3d(-28px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translate3d(28px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translate3d(0, 26px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@utility slide-left {
+  animation: slide-in-left 0.7s var(--ease-lux) both;
+  will-change: transform, opacity;
+}
+
+@utility slide-right {
+  animation: slide-in-right 0.7s var(--ease-lux) both;
+  will-change: transform, opacity;
+}
+
+@utility slide-up {
+  animation: slide-in-up 0.7s var(--ease-lux) both;
+  will-change: transform, opacity;
+}
+
+/* Staggered slide-in for lists / mobile menus */
+@utility stagger-slide {
+  & > * {
+    animation: slide-in-right 0.55s var(--ease-lux) both;
+  }
+  & > *:nth-child(1) { animation-delay: 0.04s; }
+  & > *:nth-child(2) { animation-delay: 0.09s; }
+  & > *:nth-child(3) { animation-delay: 0.14s; }
+  & > *:nth-child(4) { animation-delay: 0.19s; }
+  & > *:nth-child(5) { animation-delay: 0.24s; }
+  & > *:nth-child(6) { animation-delay: 0.29s; }
+  & > *:nth-child(7) { animation-delay: 0.34s; }
+  & > *:nth-child(8) { animation-delay: 0.39s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-left,
+  .slide-right,
+  .slide-up,
+  .stagger-slide > * {
+    animation: none;
+  }
+}
+
+/* ---- Hover / micro-interaction layer ---- */
+
+@keyframes lux-ken-burns {
+  0% { transform: scale(1) translate3d(0, 0, 0); }
+  50% { transform: scale(1.09) translate3d(-1.5%, -1%, 0); }
+  100% { transform: scale(1) translate3d(0, 0, 0); }
+}
+
+@keyframes lux-spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@utility ken-burns {
+  animation: lux-ken-burns 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+@utility spin-slow {
+  animation: lux-spin-slow 18s linear infinite;
+}
+
+/* Animated brass glow ring that fades in on hover */
+@utility glow-ring {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-brass);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-lux);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 1;
+  }
+}
+
+/* Icon micro-interaction: pop + slight rotation */
+@utility icon-pop {
+  transition: transform 0.45s var(--ease-lux);
+
+  .group:hover &,
+  &:hover {
+    transform: translate3d(0, -2px, 0) rotate(-6deg) scale(1.12);
+  }
+}
+
+/* Nudge links to the right on hover */
+@utility link-nudge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition:
+    transform 0.35s var(--ease-lux),
+    color 0.3s var(--ease-lux);
+
+  &:hover {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Tactile press feedback for touch */
+@utility press {
+  transition: transform 0.18s var(--ease-lux);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Underline that sweeps in from the left */
+@utility sweep-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    height: 1px;
+    width: 100%;
+    background: var(--gradient-brass);
+    transform: scale3d(0, 1, 1);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-lux);
+  }
+
+  &:hover::after {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns,
+  .spin-slow {
+    animation: none;
+  }
+  .icon-pop,
+  .link-nudge:hover,
+  .press:active {
+    transform: none;
+  }
+}
