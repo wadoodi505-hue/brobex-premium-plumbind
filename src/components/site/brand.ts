@@ -5,6 +5,8 @@ export const BRAND = {
   phoneHref: "tel:+9203709995042",
   whatsappDisplay: "+92 370-999-5042",
   whatsappHref: "https://wa.me/923709995042",
+  instagramUrl: "https://www.instagram.com/codewithbrobex/",
+  portfolioUrl: "https://brobexportfolio.vercel.app/",
 };
 
 export const NAV_LINKS = [

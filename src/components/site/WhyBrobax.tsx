@@ -72,7 +72,9 @@ export function WhyBrobax() {
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                       {point.text}
                     </p>
-                    <p className="mt-2 text-xs leading-relaxed text-brass-soft/75">{point.detail}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-brass-soft/75">
+                      {point.detail}
+                    </p>
                   </div>
                 </div>
               </Reveal>

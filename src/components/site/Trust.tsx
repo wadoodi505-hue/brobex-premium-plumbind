@@ -39,7 +39,10 @@ const stats = ["Fast Response", "Professional Service", "Reliable Solutions", "C
 export function Trust() {
   return (
     <section id="about" className="relative overflow-hidden py-24 lg:py-32">
-      <div className="depth-bg pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
+      <div
+        className="depth-bg pointer-events-none absolute inset-0 opacity-70"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">About BroBax</p>

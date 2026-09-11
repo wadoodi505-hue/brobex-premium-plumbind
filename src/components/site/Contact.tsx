@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { Instagram, Mail, MessageCircle, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { Reveal } from "./Reveal";
 import { LuxButton } from "./LuxButton";
@@ -23,24 +23,44 @@ const fieldClass =
 
 export function Contact() {
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const service = String(data.get("service") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    if (
+      name.length < 2 ||
+      phone.length < 7 ||
+      !email.includes("@") ||
+      !service ||
+      message.length < 10
+    ) {
+      setError("Please complete every field. Add at least a sentence describing the issue.");
+      toast.error("Please complete each field so we can understand the request.");
+      return;
+    }
+
+    setError("");
     setSending(true);
 
     const body = [
-      `Name: ${data.get("name")}`,
-      `Phone: ${data.get("phone")}`,
-      `Email: ${data.get("email")}`,
-      `Service Type: ${data.get("service")}`,
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Email: ${email}`,
+      `Service Type: ${service}`,
       "",
-      String(data.get("message") ?? ""),
+      message,
     ].join("\n");
 
     window.location.href = `mailto:${BRAND.email}?subject=${encodeURIComponent(
-      `Service request — ${data.get("service")}`,
+      `Service request — ${service}`,
     )}&body=${encodeURIComponent(body)}`;
 
     toast.success("Opening your email app to send the request to BroBax.");
@@ -58,15 +78,12 @@ export function Contact() {
             Request a service <span className="text-metal">with BroBax</span>
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Tell us what you need and we will follow up promptly with next steps and a clear plan for
-            the work.
+            Tell us what you need and we will follow up promptly with next steps and a clear plan
+            for the work.
           </p>
 
           <div className="mt-10 space-y-4">
-            <a
-              href={BRAND.phoneHref}
-              className="lux-card flex items-center gap-4 rounded-2xl p-5"
-            >
+            <a href={BRAND.phoneHref} className="lux-card flex items-center gap-4 rounded-2xl p-5">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-brass/30 bg-brass/10 text-brass">
                 <Phone className="h-4 w-4" aria-hidden="true" />
               </span>
@@ -107,17 +124,39 @@ export function Contact() {
                 </span>
               </span>
             </a>
+            <a
+              href={BRAND.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lux-card flex items-center gap-4 rounded-2xl p-5"
+            >
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-brass/30 bg-brass/10 text-brass">
+                <Instagram className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span className="min-w-0">
+                <span className="eyebrow block">Instagram</span>
+                <span className="mt-1 block text-base text-foreground/90">@codewithbrobex</span>
+              </span>
+            </a>
           </div>
         </Reveal>
 
         <Reveal delay={100}>
-          <form onSubmit={handleSubmit} className="glass rounded-[1.5rem] p-6 sm:p-9">
+          <form onSubmit={handleSubmit} className="glass rounded-[1.5rem] p-6 sm:p-9" noValidate>
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="name" className="eyebrow mb-2 block">
                   Name
                 </label>
-                <input id="name" name="name" required className={fieldClass} placeholder="Full name" />
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  minLength={2}
+                  autoComplete="name"
+                  className={fieldClass}
+                  placeholder="Full name"
+                />
               </div>
               <div>
                 <label htmlFor="phone" className="eyebrow mb-2 block">
@@ -128,6 +167,8 @@ export function Contact() {
                   name="phone"
                   type="tel"
                   required
+                  autoComplete="tel"
+                  inputMode="tel"
                   className={fieldClass}
                   placeholder="Best contact number"
                 />
@@ -141,6 +182,7 @@ export function Contact() {
                   name="email"
                   type="email"
                   required
+                  autoComplete="email"
                   className={fieldClass}
                   placeholder="you@example.com"
                 />
@@ -169,6 +211,7 @@ export function Contact() {
                   name="message"
                   rows={5}
                   required
+                  minLength={10}
                   className={`${fieldClass} resize-none`}
                   placeholder="Describe the issue or the work you need"
                 />
@@ -179,6 +222,9 @@ export function Contact() {
               Request Service
               <Send className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5" />
             </LuxButton>
+            <p role="alert" aria-live="polite" className="mt-3 min-h-5 text-xs text-destructive">
+              {error}
+            </p>
             <p className="mt-4 text-xs text-muted-foreground">
               Submitting opens your email app with the details pre-filled for {BRAND.email}.
             </p>

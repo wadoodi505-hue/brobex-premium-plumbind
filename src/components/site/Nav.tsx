@@ -31,6 +31,17 @@ export function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -38,9 +49,9 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
-        <Link to="/" className="min-w-0" aria-label="BroBax home">
+        <div className="min-w-0">
           <Logo />
-        </Link>
+        </div>
 
         <nav aria-label="Main" className="hidden items-center gap-7 xl:flex">
           {NAV_LINKS.map((link) => (
@@ -73,6 +84,7 @@ export function Nav() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
             aria-label={open ? "Close menu" : "Open menu"}
             className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border text-foreground transition-colors hover:border-brass/50 hover:text-brass xl:hidden"
           >
@@ -82,6 +94,7 @@ export function Nav() {
       </div>
 
       <div
+        id="mobile-navigation"
         className={`glass fixed inset-x-0 top-[4.5rem] mx-3 origin-top rounded-2xl p-6 transition-[transform,opacity] duration-500 ease-[var(--ease-lux)] will-change-transform xl:hidden ${
           open
             ? "pointer-events-auto translate-x-0 opacity-100"
@@ -100,8 +113,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="py-3.5 font-display text-2xl text-foreground/90 transition-colors hover:text-brass"
               activeProps={{
-                className:
-                  "text-brass underline decoration-brass decoration-1 underline-offset-8",
+                className: "text-brass underline decoration-brass decoration-1 underline-offset-8",
               }}
             >
               {link.label}
