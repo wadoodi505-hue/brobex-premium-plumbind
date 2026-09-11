@@ -70,10 +70,7 @@ const marquee = [
 export function Advantages() {
   return (
     <section id="advantages" className="relative overflow-hidden py-24 lg:py-32">
-      <div
-        className="depth-bg pointer-events-none absolute inset-0 opacity-60"
-        aria-hidden="true"
-      />
+      <div className="depth-bg pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
       <div
         className="aurora pointer-events-none absolute -right-24 top-10 h-[26rem] w-[26rem] rounded-full bg-brass/10 blur-[130px]"
         aria-hidden="true"
@@ -83,7 +80,8 @@ export function Advantages() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">More From BroBex</p>
           <h2 className="mt-4 text-4xl sm:text-5xl">
-            Extra features that make service <span className="text-metal-shimmer">effortless</span>
+            Extra features that make service{" "}
+            <span className="text-metal-shimmer">effortless</span>
           </h2>
           <p className="mt-5 text-muted-foreground">
             Beyond the repair itself, every booking includes the details that make the whole
@@ -116,7 +114,8 @@ export function Advantages() {
           <div
             className="glass relative overflow-hidden rounded-2xl py-5"
             style={{
-              maskImage: "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
+              maskImage:
+                "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
               WebkitMaskImage:
                 "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
             }}

@@ -1,8 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { BRAND, NAV_LINKS } from "./brand";
 import { SERVICES } from "./serviceData";
+
+const socials = [
+  { label: "Facebook", icon: Facebook },
+  { label: "Instagram", icon: Instagram },
+  { label: "LinkedIn", icon: Linkedin },
+];
 
 export function Footer() {
   return (
@@ -16,15 +22,16 @@ export function Footer() {
               and transparent communication.
             </p>
             <div className="mt-6 flex gap-3">
-              <a
-                href={BRAND.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow BroBex on Instagram"
-                className="group press grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-brass/50 hover:text-brass"
-              >
-                <Instagram className="icon-pop h-4 w-4" aria-hidden="true" />
-              </a>
+              {socials.map((social) => (
+                <Link
+                  key={social.label}
+                  to="/contact"
+                  aria-label={`${social.label} (placeholder)`}
+                  className="group press grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-brass/50 hover:text-brass"
+                >
+                  <social.icon className="icon-pop h-4 w-4" aria-hidden="true" />
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -71,17 +78,6 @@ export function Footer() {
                 >
                   <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
                   {BRAND.phoneDisplay}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={BRAND.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-nudge text-sm text-muted-foreground hover:text-brass"
-                >
-                  <Instagram className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  Instagram
                 </a>
               </li>
               <li>

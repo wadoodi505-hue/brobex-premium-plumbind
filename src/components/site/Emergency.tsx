@@ -41,15 +41,9 @@ export function Emergency() {
 
           <dl className="mt-12 grid gap-4 sm:grid-cols-3">
             {[
-              {
-                k: "First priority",
-                v: "Isolate the supply and stop further damage to your home.",
-              },
+              { k: "First priority", v: "Isolate the supply and stop further damage to your home." },
               { k: "Then", v: "Diagnose the true cause and confirm the cost before any work." },
-              {
-                k: "Before we leave",
-                v: "Re-test, clean down, and explain how to avoid a repeat.",
-              },
+              { k: "Before we leave", v: "Re-test, clean down, and explain how to avoid a repeat." },
             ].map((d) => (
               <div
                 key={d.k}

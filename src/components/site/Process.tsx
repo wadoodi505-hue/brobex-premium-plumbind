@@ -72,9 +72,7 @@ export function Process() {
                   </span>
                 </div>
                 <h3 className="mt-6 text-2xl">{s.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {s.text}
-                </p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                 <div className="hairline my-5" aria-hidden="true" />
                 <p className="text-[0.68rem] tracking-[0.18em] uppercase text-brass-soft/80">
                   {s.detail}

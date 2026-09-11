@@ -15,8 +15,7 @@ export function Services({ heading = true }: { heading?: boolean }) {
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Our Services</p>
             <h2 className="mt-4 text-4xl sm:text-5xl">
-              A complete plumbing &amp; heating{" "}
-              <span className="text-metal">service portfolio</span>
+              A complete plumbing &amp; heating <span className="text-metal">service portfolio</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
               From urgent repairs to planned maintenance, every visit follows the same standard of
@@ -25,9 +24,7 @@ export function Services({ heading = true }: { heading?: boolean }) {
           </Reveal>
         ) : null}
 
-        <div
-          className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6 ${heading ? "mt-14" : ""}`}
-        >
+        <div className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6 ${heading ? "mt-14" : ""}`}>
           {SERVICES.map((service, i) => (
             <Reveal
               key={service.slug}
@@ -40,17 +37,13 @@ export function Services({ heading = true }: { heading?: boolean }) {
                   <service.icon className="icon-pop h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="mt-6 text-2xl">{service.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.text}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {service.text}
+                </p>
                 <ul className="mt-4 flex-1 space-y-2">
                   {service.includes.slice(0, 3).map((inc) => (
-                    <li
-                      key={inc}
-                      className="flex gap-2 text-xs leading-relaxed text-muted-foreground/85"
-                    >
-                      <span
-                        className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brass"
-                        aria-hidden="true"
-                      />
+                    <li key={inc} className="flex gap-2 text-xs leading-relaxed text-muted-foreground/85">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brass" aria-hidden="true" />
                       <span>{inc}</span>
                     </li>
                   ))}

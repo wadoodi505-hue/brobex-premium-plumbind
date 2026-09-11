@@ -44,8 +44,7 @@ export const SERVICES: Service[] = [
       "Sewage smell or waste backing up",
       "No heating or hot water in cold conditions",
     ],
-    response:
-      "Priority same-day attendance whenever the situation is unsafe or actively causing damage.",
+    response: "Priority same-day attendance whenever the situation is unsafe or actively causing damage.",
   },
   {
     slug: "drain-cleaning",

@@ -7,8 +7,6 @@ import { Process } from "@/components/site/Process";
 import { Advantages } from "@/components/site/Advantages";
 import { Emergency } from "@/components/site/Emergency";
 import { Testimonials } from "@/components/site/Testimonials";
-import { Faq } from "@/components/site/Faq";
-import { Contact } from "@/components/site/Contact";
 import { BRAND } from "@/components/site/brand";
 
 const title = "BroBax — Premium Plumbing & Heating Services";
@@ -52,8 +50,6 @@ function Index() {
       <Advantages />
       <Emergency />
       <Testimonials limit={3} />
-      <Faq />
-      <Contact />
     </SiteLayout>
   );
 }

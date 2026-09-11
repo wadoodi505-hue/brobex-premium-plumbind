@@ -85,10 +85,7 @@ function ServiceDetail() {
               <h2 className="text-2xl">What this service includes</h2>
               <ul className="mt-6 space-y-4">
                 {service.includes.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
-                  >
+                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-brass" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
@@ -102,10 +99,7 @@ function ServiceDetail() {
               <h2 className="text-2xl">Signs you need this</h2>
               <ul className="mt-6 space-y-4">
                 {service.signs.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
-                  >
+                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
                     <span
                       className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass"
                       aria-hidden="true"

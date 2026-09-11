@@ -1,15 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Code2,
-  Mail,
-  MessageCircle,
-  MonitorSmartphone,
-  Palette,
-  Phone,
-  Rocket,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import { Code2, Mail, MessageCircle, MonitorSmartphone, Palette, Phone, Rocket, Search, Sparkles } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
@@ -243,8 +233,7 @@ function AboutBrobexPage() {
                 <span className="text-metal-shimmer">BroBex</span>
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
-                Want one for your business? Tap the logo in the header any time to come back here,
-                or{" "}
+                Want one for your business? Tap the logo in the header any time to come back here, or{" "}
                 <Link to="/contact" className="text-brass-soft sweep-underline hover:text-brass">
                   send a message
                 </Link>
