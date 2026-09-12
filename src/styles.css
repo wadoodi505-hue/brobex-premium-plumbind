@@ -180,11 +180,17 @@
 }
 
 @utility reveal {
-  opacity: 1;
-  transform: none;
-  transition: none;
-  will-change: auto;
-  backface-visibility: visible;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s var(--ease-lux),
+    transform 0.8s var(--ease-lux);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+
+  &[data-from="left"] {
+    transform: translate3d(-40px, 0, 0);
+  }
 
   &[data-from="right"] {
     transform: translate3d(40px, 0, 0);

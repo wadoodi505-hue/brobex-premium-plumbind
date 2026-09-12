@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowUpRight, Check, Clock, Phone } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { LuxLink, LuxRouteLink } from "@/components/site/LuxButton";
-import { SERVICES, getService } from "@/components/site/serviceData";
+import { SERVICES, getService } from "@/components/site/services";
 import { BRAND } from "@/components/site/brand";
 
 export const Route = createFileRoute("/services/$slug")({

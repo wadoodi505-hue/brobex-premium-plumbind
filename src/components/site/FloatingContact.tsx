@@ -1,4 +1,4 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Instagram, MessageCircle, Phone } from "lucide-react";
 import { BRAND } from "./brand";
 
 export function FloatingContact() {
@@ -27,6 +27,20 @@ export function FloatingContact() {
           WhatsApp
         </span>
       </a>
+
+      <a
+        href={BRAND.instagramHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Follow BroBex on Instagram ${BRAND.instagramDisplay}`}
+        className="glass group press fixed right-4 bottom-[5.5rem] z-50 grid h-12 w-12 place-items-center rounded-full border border-brass/30 text-brass-soft shadow-[var(--shadow-glow)] transition-all duration-500 hover:-translate-y-1 hover:scale-110 hover:border-brass hover:text-brass sm:right-6 sm:bottom-[6.5rem]"
+      >
+        <Instagram className="icon-pop h-5 w-5" aria-hidden="true" />
+        <span className="pointer-events-none absolute right-14 hidden rounded-full border border-border bg-surface/90 px-3 py-1.5 text-[0.68rem] tracking-[0.18em] whitespace-nowrap uppercase text-foreground/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
+          Instagram
+        </span>
+      </a>
     </>
+
   );
 }

@@ -21,13 +21,6 @@ export function Reveal({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-
-    // Reveal immediately if IntersectionObserver is unavailable.
-    if (!("IntersectionObserver" in window)) {
-      setVisible(true);
-      return;
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0]?.isIntersecting) {
@@ -35,24 +28,10 @@ export function Reveal({
           observer.disconnect();
         }
       },
-      {
-        threshold: 0,
-        rootMargin: "200px 0px 200px 0px",
-      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px" },
     );
-
     observer.observe(node);
-
-    // Safety fallback: never leave content permanently invisible.
-    const fallback = window.setTimeout(() => {
-      setVisible(true);
-      observer.disconnect();
-    }, 1200);
-
-    return () => {
-      observer.disconnect();
-      window.clearTimeout(fallback);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (

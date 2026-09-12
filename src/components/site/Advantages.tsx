@@ -78,15 +78,28 @@ export function Advantages() {
 
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">More From BroBex</p>
+          <p className="eyebrow">
+            More From{" "}
+            <a
+              href="https://brobexportfolio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sweep-underline text-brass-soft transition-colors hover:text-brass"
+            >
+              BroBex
+            </a>
+          </p>
           <h2 className="mt-4 text-4xl sm:text-5xl">
             Extra features that make service{" "}
             <span className="text-metal-shimmer">effortless</span>
           </h2>
           <p className="mt-5 text-muted-foreground">
             Beyond the repair itself, every booking includes the details that make the whole
-            experience calm, clear, and easy to plan around.
+            experience calm, clear, and easy to plan around — upfront pricing, tidy workspaces,
+            photo updates after the job, and a direct line to a real person who remembers your
+            system.
           </p>
+
         </Reveal>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

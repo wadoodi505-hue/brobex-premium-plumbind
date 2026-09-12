@@ -38,9 +38,10 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
-        <Link to="/" className="min-w-0" aria-label="BroBax home">
+        <span className="min-w-0">
           <Logo />
-        </Link>
+        </span>
+
 
         <nav aria-label="Main" className="hidden items-center gap-7 xl:flex">
           {NAV_LINKS.map((link) => (

@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Code2, Mail, MessageCircle, MonitorSmartphone, Palette, Phone, Rocket, Search, Sparkles } from "lucide-react";
+import { Code2, Globe, Instagram, Mail, MessageCircle, MonitorSmartphone, Palette, Phone, Rocket, Search, Sparkles } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
 import { LuxLink } from "@/components/site/LuxButton";
 import { BRAND } from "@/components/site/brand";
-import logoAsset from "@/assets/brobex-logo.png";
+import logoAsset from "@/assets/brobex-logo.png.asset.json";
 
 const title = "About BroBex — Web Developer | Code. Design. Solve. Elevate.";
 const description =
@@ -94,7 +94,22 @@ const contacts = [
     href: `mailto:${BRAND.email}`,
     external: false,
   },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    value: BRAND.instagramDisplay,
+    href: BRAND.instagramHref,
+    external: true,
+  },
+  {
+    icon: Globe,
+    label: "Portfolio",
+    value: "brobexportfolio.vercel.app",
+    href: BRAND.portfolioHref,
+    external: true,
+  },
 ];
+
 
 function AboutBrobexPage() {
   return (
@@ -112,7 +127,7 @@ function AboutBrobexPage() {
             <div className="lux-card glow-ring sheen group mx-auto grid max-w-xs place-items-center rounded-[1.75rem] p-8">
               <span className="float-slow grid h-40 w-40 place-items-center overflow-hidden rounded-full border border-brass/40 bg-surface-2">
                 <img
-                  src={logoAsset}
+                  src={logoAsset.url}
                   alt="BroBex web developer logo"
                   width={320}
                   height={320}
@@ -146,19 +161,25 @@ function AboutBrobexPage() {
               </p>
               <p>
                 Need something similar for your own business — a portfolio, a store, a booking site,
-                or a full brand refresh? Message BroBex directly using the details below.
+                or a full brand refresh? Message BroBex directly using the details below, follow the
+                daily build process on Instagram, or browse the full portfolio to see finished work.
               </p>
             </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <LuxLink href={BRAND.whatsappHref} target="_blank" rel="noopener noreferrer">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <LuxLink href={BRAND.portfolioHref} target="_blank" rel="noopener noreferrer">
+                <Globe className="h-4 w-4" aria-hidden="true" />
+                View Portfolio
+              </LuxLink>
+              <LuxLink href={BRAND.instagramHref} target="_blank" rel="noopener noreferrer" variant="outline">
+                <Instagram className="h-4 w-4" aria-hidden="true" />
+                Follow {BRAND.instagramDisplay}
+              </LuxLink>
+              <LuxLink href={BRAND.whatsappHref} target="_blank" rel="noopener noreferrer" variant="outline">
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
                 Message on WhatsApp
               </LuxLink>
-              <LuxLink href={`mailto:${BRAND.email}`} variant="outline">
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Email BroBex
-              </LuxLink>
             </div>
+
           </Reveal>
         </div>
       </section>
@@ -230,15 +251,33 @@ function AboutBrobexPage() {
               <p className="eyebrow">Credit</p>
               <p className="mt-3 font-display text-2xl sm:text-3xl">
                 This site is designed &amp; developed by{" "}
-                <span className="text-metal-shimmer">BroBex</span>
+                <a
+                  href={BRAND.portfolioHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-metal-shimmer sweep-underline"
+                >
+                  BroBex
+                </a>
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
-                Want one for your business? Tap the logo in the header any time to come back here, or{" "}
+                Tapping the BroBex logo or name anywhere on this site opens the full portfolio. Want
+                one for your business?{" "}
+                <a
+                  href={BRAND.instagramHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brass-soft sweep-underline hover:text-brass"
+                >
+                  DM on Instagram
+                </a>{" "}
+                or{" "}
                 <Link to="/contact" className="text-brass-soft sweep-underline hover:text-brass">
                   send a message
                 </Link>
                 .
               </p>
+
             </div>
           </Reveal>
         </div>

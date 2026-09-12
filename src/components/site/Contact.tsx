@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { Reveal } from "./Reveal";
 import { LuxButton } from "./LuxButton";
@@ -95,10 +95,10 @@ export function Contact() {
             </a>
             <a
               href={`mailto:${BRAND.email}`}
-              className="lux-card flex items-center gap-4 rounded-2xl p-5"
+              className="lux-card glow-ring sheen group press flex items-center gap-4 rounded-2xl p-5"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-brass/30 bg-brass/10 text-brass">
-                <Mail className="h-4 w-4" aria-hidden="true" />
+                <Mail className="icon-pop h-4 w-4" aria-hidden="true" />
               </span>
               <span className="min-w-0">
                 <span className="eyebrow block">Email</span>
@@ -107,7 +107,27 @@ export function Contact() {
                 </span>
               </span>
             </a>
+            <a
+              href={BRAND.instagramHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lux-card glow-ring sheen group press flex items-center gap-4 rounded-2xl p-5"
+            >
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-brass/30 bg-brass/10 text-brass">
+                <Instagram className="icon-pop h-4 w-4" aria-hidden="true" />
+              </span>
+              <span className="min-w-0">
+                <span className="eyebrow block">Instagram</span>
+                <span className="mt-1 block font-display text-2xl text-brass-soft">
+                  {BRAND.instagramDisplay}
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground">
+                  Behind-the-scenes builds, finished jobs, and quick tips.
+                </span>
+              </span>
+            </a>
           </div>
+
         </Reveal>
 
         <Reveal delay={100}>
