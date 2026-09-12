@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/brobex-logo.png.asset.json";
+import logoAsset from "@/assets/brobex-logo.png";
 import { BRAND } from "./brand";
 
 export function Logo({ className = "" }: { className?: string }) {
