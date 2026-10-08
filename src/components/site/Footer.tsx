@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { BRAND, NAV_LINKS } from "./brand";
-import { SERVICES } from "./services";
+import { SERVICES } from "./serviceCatalog";
 
 const socials = [
   { icon: Instagram, label: "Instagram", href: BRAND.instagramHref },

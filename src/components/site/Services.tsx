@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { SERVICES } from "./services";
+import { SERVICES } from "./serviceCatalog";
 
 export function Services({ heading = true }: { heading?: boolean }) {
   return (
